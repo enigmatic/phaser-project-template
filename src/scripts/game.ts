@@ -1,12 +1,13 @@
 import 'phaser'
 import MainScene from './scenes/mainScene'
 import PreloadScene from './scenes/preloadScene'
+import { Scene } from 'phaser'
 
 const DEFAULT_WIDTH = 1280
 const DEFAULT_HEIGHT = 720
 
 // @ts-ignore https://github.com/photonstorm/phaser/issues/4522
-const config: GameConfig = {
+const config: Phaser.Types.Core.GameConfig = {
   backgroundColor: '#ffffff',
   scale: {
     parent: 'phaser-game',
@@ -15,7 +16,7 @@ const config: GameConfig = {
     width: DEFAULT_WIDTH,
     height: DEFAULT_HEIGHT
   },
-  scene: [PreloadScene, MainScene],
+  scene: [new PreloadScene(), new MainScene()],
   physics: {
     default: 'arcade',
     arcade: {

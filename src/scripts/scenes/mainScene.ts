@@ -1,12 +1,15 @@
 import PhaserLogo from '../objects/phaserLogo'
 import FpsText from '../objects/fpsText'
+import { Scene } from 'phaser'
 
-export default class MainScene extends Phaser.Scene {
+export default class MainScene extends Scene {
   fpsText: Phaser.GameObjects.Text
 
   constructor() {
     super({ key: 'MainScene' })
   }
+
+  preload() {}
 
   create() {
     new PhaserLogo(this, this.cameras.main.width / 2, 0)

@@ -1,4 +1,6 @@
-export default class PreloadScene extends Phaser.Scene {
+import { Scene } from 'phaser'
+
+export default class PreloadScene extends Scene {
   constructor() {
     super({ key: 'PreloadScene' })
   }
