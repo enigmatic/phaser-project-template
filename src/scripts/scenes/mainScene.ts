@@ -1,19 +1,19 @@
-import PhaserLogo from '../objects/phaserLogo'
-import FpsText from '../objects/fpsText'
-import { Scene } from 'phaser'
+import PhaserLogo from '../objects/phaserLogo';
+import FpsText from '../objects/fpsText';
+import { Scene } from 'phaser';
 
 export default class MainScene extends Scene {
-  fpsText: Phaser.GameObjects.Text
+  fpsText: Phaser.GameObjects.Text;
 
   constructor() {
-    super({ key: 'MainScene' })
+    super({ key: 'MainScene' });
   }
 
   preload() {}
 
   create() {
-    new PhaserLogo(this, this.cameras.main.width / 2, 0)
-    this.fpsText = new FpsText(this)
+    new PhaserLogo(this, this.cameras.main.width / 2, 0);
+    this.fpsText = new FpsText(this);
 
     // display the Phaser.VERSION
     this.add
@@ -21,11 +21,11 @@ export default class MainScene extends Scene {
         color: '#000000',
         fontSize: 24
       })
-      .setOrigin(1, 0)
+      .setOrigin(1, 0);
   }
 
   update() {
-    this.fpsText.update(this)
+    this.fpsText.update(this);
   }
 }
 //

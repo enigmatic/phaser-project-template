@@ -1,10 +1,10 @@
-import 'phaser'
-import MainScene from './scenes/mainScene'
-import PreloadScene from './scenes/preloadScene'
-import { Scene } from 'phaser'
+import 'phaser';
+import MainScene from './scenes/mainScene';
+import PreloadScene from './scenes/preloadScene';
+import { Scene } from 'phaser';
 
-const DEFAULT_WIDTH = 1280
-const DEFAULT_HEIGHT = 720
+const DEFAULT_WIDTH = 1280;
+const DEFAULT_HEIGHT = 720;
 
 // @ts-ignore https://github.com/photonstorm/phaser/issues/4522
 const config: Phaser.Types.Core.GameConfig = {
@@ -24,9 +24,9 @@ const config: Phaser.Types.Core.GameConfig = {
       gravity: { y: 400 }
     }
   }
-}
+};
 
 window.addEventListener('load', () => {
-  let game = new Phaser.Game(config)
-})
+  let game = new Phaser.Game(config);
+});
 //
