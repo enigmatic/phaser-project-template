@@ -8,7 +8,7 @@ const DEFAULT_HEIGHT = 720;
 
 // @ts-ignore https://github.com/photonstorm/phaser/issues/4522
 const config: Phaser.Types.Core.GameConfig = {
-  backgroundColor: '#ffffff',
+  backgroundColor: '#000',
   scale: {
     parent: 'phaser-game',
     mode: Phaser.Scale.FIT,
