@@ -8,7 +8,8 @@ export default class Player {
     thrustKey:Phaser.Input.Keyboard.Key,
     leftKey:Phaser.Input.Keyboard.Key,
     rightKey:Phaser.Input.Keyboard.Key,
-    reverseKey:Phaser.Input.Keyboard.Key
+    reverseKey:Phaser.Input.Keyboard.Key,
+    fireKey:Phaser.Input.Keyboard.Key
   };
 
   constructor( {scene, x, y}) {
@@ -19,7 +20,6 @@ export default class Player {
 
   
   preload() {
-    //this.scene.load.atlas('flares', flaresPNG, flaresJSON);
     this.buildInputs();
     this.ship.preload();
 
@@ -27,7 +27,6 @@ export default class Player {
 
   create() {
     this.ship.create();
-    this.scene.cameras.main.startFollow(this.ship).zoom = 2;
   }
 
   update() {
@@ -38,23 +37,18 @@ export default class Player {
       this.ship.accelerate = false;
     }
     if (this.controls.leftKey.isDown) {
-      this.ship.angle -= 5;
+      this.ship.startTurnLeft();
     } else if (this.controls.rightKey.isDown) {
-      this.ship.angle +=5;
+      this.ship.startTurnRight();
     } else if (this.controls.reverseKey.isDown) {
-      if (Phaser.Math.Fuzzy.GreaterThan(this.ship.body.velocity.length(), 1)) {
-        let angle = Phaser.Math.Angle.Normalize(Phaser.Math.Angle.BetweenPoints({x:0,y:0},this.ship.body.velocity) - Phaser.Math.DEG_TO_RAD * 90);
-        let shipAngle = Phaser.Math.Angle.Normalize(this.ship.rotation);
-
-        if (Phaser.Math.Fuzzy.Equal(angle, shipAngle)) {
-          this.ship.accelerate = true;
-        } else {
-          this.ship.rotation = Phaser.Math.Angle.RotateTo(shipAngle, angle, 0.05);
-        }
-      } else {
-        this.ship.setVelocity(0,0);
-      }
+      this.ship.reverse();
       
+    } else {
+      this.ship.stopTurning();
+    }
+
+    if (this.controls.fireKey.isDown) {
+      this.ship.fire();
     }
 
     this.ship.update();
@@ -70,7 +64,8 @@ export default class Player {
       leftKey: left as Phaser.Input.Keyboard.Key,
       rightKey: right as Phaser.Input.Keyboard.Key,
       thrustKey: up as Phaser.Input.Keyboard.Key,
-      reverseKey: down as Phaser.Input.Keyboard.Key
+      reverseKey: down as Phaser.Input.Keyboard.Key,
+      fireKey: space as Phaser.Input.Keyboard.Key
     }
   }
 
