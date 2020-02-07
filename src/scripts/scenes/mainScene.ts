@@ -25,7 +25,6 @@ export default class MainScene extends Scene {
   }
 
   update() {
-    this.fpsText.update(this);
+    this.fpsText.update();
   }
 }
-//
