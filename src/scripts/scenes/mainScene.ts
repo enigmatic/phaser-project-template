@@ -12,13 +12,12 @@ export default class MainScene extends Scene {
   }
 
   preload() {
-    this.player = new Player({scene: this, x:640, y:360})
+    this.player = new Player({ scene: this, x: 640, y: 360 });
 
     this.player.preload();
   }
 
   create() {
-    
     this.player.create();
     new PhaserLogo(this, this.cameras.main.width / 2, 0);
     this.fpsText = new FpsText(this);
@@ -34,7 +33,6 @@ export default class MainScene extends Scene {
 
   update() {
     this.player.update();
-    this.fpsText.update(this);
+    this.fpsText.update();
   }
 }
-//

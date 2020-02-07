@@ -6,9 +6,9 @@ import { Scene } from 'phaser';
 const DEFAULT_WIDTH = 1280;
 const DEFAULT_HEIGHT = 720;
 
-// @ts-ignore https://github.com/photonstorm/phaser/issues/4522
 const config: Phaser.Types.Core.GameConfig = {
-  backgroundColor: '#000',
+  type: Phaser.AUTO,
+  backgroundColor: '#000000',
   scale: {
     parent: 'phaser-game',
     mode: Phaser.Scale.FIT,
@@ -26,6 +26,5 @@ const config: Phaser.Types.Core.GameConfig = {
 };
 
 window.addEventListener('load', () => {
-  let game = new Phaser.Game(config);
+  const game = new Phaser.Game(config);
 });
-//
